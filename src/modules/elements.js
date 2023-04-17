@@ -11,9 +11,30 @@ export const createMain = () => {
 }
 
 export const createFooter = () => {
-	const footerElement = document.createElement('footer');
+	const element = document.createElement('footer');
 
-	return footerElement;
+	const page = document.createElement('div');
+	page.classList.add('page');
+	element.appendChild(page);
+
+	const authorWidget = document.createElement('div');
+	authorWidget.classList.add('author-widget');
+	page.appendChild(authorWidget);
+
+	const authorTextElement = document.createElement('p');
+	authorTextElement.textContent = 'Created by ';
+	authorWidget.appendChild(authorTextElement);
+
+	const authorLink = document.createElement('a');
+	const link = 'https://github.com/kenyachan';
+	const author = 'Kenya Chan';
+	authorLink.setAttribute('href', link);
+	authorLink.setAttribute('target', '_blank');
+	authorLink.setAttribute('rel', 'noopener noreferrer');
+	authorLink.textContent = author;
+	authorTextElement.appendChild(authorLink);
+
+	return element;
 }
 
 export const createDetailCollectionForm = () => {
