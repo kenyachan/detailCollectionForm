@@ -1,11 +1,24 @@
 export const createHeader = () => {
-	const headerElement = document.createElement('header');
+	const element = document.createElement('header');
 
-	return headerElement;
+	const page = document.createElement('div');
+	page.classList.add('page');
+	element.appendChild(page);
+
+	const pageTitle = document.createElement('p');
+	pageTitle.classList.add('title');
+	pageTitle.textContent = 'Form Validation Practice';
+	page.appendChild(pageTitle);
+
+	return element;
 }
 
 export const createMain = () => {
 	const mainElement = document.createElement('main');
+
+	const page = document.createElement('div');
+	page.classList.add('page');
+	mainElement.appendChild(page);
 
 	return mainElement;
 }
@@ -48,8 +61,13 @@ export const createDetailCollectionForm = () => {
 	form.appendChild(title);
 
 	form.appendChild(createEmailInput());
-	form.appendChild(createCountryInput(countryList));
-	form.appendChild(createPostCodeInput());
+	
+	const addressDetails = document.createElement('div');
+	addressDetails.classList.add('address');
+	addressDetails.appendChild(createCountryInput(countryList));
+	addressDetails.appendChild(createPostCodeInput());
+	form.appendChild(addressDetails);
+
 	form.appendChild(createPasswordInput());
 	form.appendChild(createPasswordConfirmationInput());
 
@@ -69,7 +87,10 @@ function createEmailInput() {
 	const input = document.createElement('input');
 	input.setAttribute('type', 'email');
 	input.setAttribute('name', 'email');
+	input.setAttribute('title', 'Please enter your email address');
+	input.setAttribute('placeholder', 'your.email@mail.com');
 	input.id = 'email';
+	input.required = true;
 	element.appendChild(input);
 
 	return element;
@@ -85,8 +106,16 @@ function createCountryInput(countryList) {
 
 	const select = document.createElement('select');
 	select.setAttribute('name', 'countryInput');
+	select.setAttribute('title', 'Please select a country');
 	select.id = 'countryInput';
+	select.required = true;
 	element.appendChild(select);
+
+	const defaultOption = document.createElement('option');
+	defaultOption.value = '';
+	defaultOption.textContent = 'Select a country';
+	defaultOption.selected = true;
+	select.appendChild(defaultOption);
 
 	countryList.forEach(country => {
 		const option = document.createElement('option');
@@ -112,7 +141,10 @@ function createPostCodeInput() {
 	input.setAttribute('minlength', '4');
 	input.setAttribute('maxlength', '5');
 	input.setAttribute('pattern', '\\d{4,5}');
+	input.setAttribute('title', 'Please enter your post code');
+	input.setAttribute('placeholder', '2000');
 	input.id = 'postCodeInput';
+	input.required = true;
 	element.appendChild(input);
 
 	return element;
@@ -129,7 +161,9 @@ function createPasswordInput() {
 	const input = document.createElement('input');
 	input.setAttribute('type', 'password');
 	input.setAttribute('name', 'password');
+	input.setAttribute('title', 'Please enter a new password');
 	input.id = 'password';
+	input.required = true;
 	element.appendChild(input);
 
 	return element;
@@ -146,7 +180,9 @@ function createPasswordConfirmationInput() {
 	const input = document.createElement('input');
 	input.setAttribute('type', 'password');
 	input.setAttribute('name', 'passwordConfirmation');
+	input.setAttribute('title', 'Please confirm your password');
 	input.id = 'passwordConfirmation';
+	input.required = true;
 	element.appendChild(input);
 
 	return element;
