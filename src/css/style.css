@@ -1,0 +1,95 @@
+:root {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100svh;
+}
+
+header .title {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+main {
+	display: flex;
+	flex: 1 1 auto;
+}
+
+.page {
+	display: flex;
+	width: clamp(350px, 80vw, 1200px);
+}
+
+header,
+main,
+footer {
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+}
+
+main .page {
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	border: 1px solid black;
+	border-radius: 10px;
+	width: clamp(175px, 60vw, 350px);
+	height: fit-content;
+	padding: 1.5rem;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+form .form-title {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+form div {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	font-size: 0.65rem;
+	text-transform: uppercase;
+	/*justify-content: space-between;*/
+}
+
+form div>select,
+form div>input {
+	width: 100%;
+	border: none;
+	padding: 3px;
+	border-bottom: 1px solid black;
+
+	font-size: 1rem;
+}
+
+form .address{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	flex-direction: row;
+}
+
+form .address>div {
+	justify-content: space-between;
+}
+
+form input:invalid,
+form select:invalid {
+	border-bottom: 1px solid red;
+}
+
